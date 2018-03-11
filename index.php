@@ -170,7 +170,7 @@
       				    <div class="form-group row">
       				    	<label class="align-middle col-md-4">Picie rozpocząłem o godzinie</label>
       				    	<div class="col-md-8">
-      				    		<select id="alcohol_type_4" class="form-control">
+      				    		<select id="date_start" class="form-control">
       				    			<?php for($i = 0; $i <= 23; $i++): ?>
       				    				<?php ($i < 10 ) ? $temp_hour = "0".$i : $temp_hour = $i; ?>
       				    				<option value="<?php echo $temp_hour; ?>" <?php if($i == 20) echo "selected"; ?>><?php echo $temp_hour; ?>:00</option>
@@ -184,7 +184,7 @@
       				    	<div class="col-md-6">
       				    		<select id="time_end" class="form-control">
       				    			<?php for($i = 0; $i <= 99; $i++): ?>
-      				    				<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+      				    				<option value="<?php echo $i; ?>" <?php if($i == 1) echo "selected"; ?>><?php echo $i; ?></option>
       				    			<?php endfor; ?>
       				    		</select>
       				    	</div>
@@ -197,7 +197,7 @@
       				    	<div class="col-md-6">
       				    		<select id="alcohol_type_4" class="form-control">
   				    				<option value="1">pusty</option>
-  				    				<option value="1">w połowie pełny</option>
+  				    				<option value="1" selected>w połowie pełny</option>
   				    				<option value="1">pełny</option>
       				    		</select>
       				    	</div>
@@ -289,105 +289,7 @@
 	    </div>
 	  </div>
 
-	<script type="text/javascript">
-
-		function test(){
-			$("#myModal #alko-result").show("slow");
-			$("#myModal #alko-form").hide("slow");
-			plec = $('#myModal #sex').val();
-			waga = $("#myModal #weight").val();
-			wzrost = $("#myModal #height").val();
-			wzrost = $("#myModal #height").val();
-			od_zakonczenia = $("#myModal #time_end").val();
-			alcohol_1 = [$("#myModal #alcohol_count_1").val(), $("#myModal #alcohol_type_1").val(), $("#myModal #alcohol_percent_1").val()];
-			alcohol_2 = [$("#myModal #alcohol_count_2").val(), $("#myModal #alcohol_type_2").val(), $("#myModal #alcohol_percent_2").val()];
-			alcohol_3 = [$("#myModal #alcohol_count_3").val(), $("#myModal #alcohol_type_3").val(), $("#myModal #alcohol_percent_3").val()];
-			alcohol_4 = [$("#myModal #alcohol_count_4").val(), $("#myModal #alcohol_type_4").val(), $("#myModal #alcohol_percent_4").val()];
-			wypite = alcohol(alcohol_1[0], alcohol_1[2])+alcohol(alcohol_2[0], alcohol_2[2])+alcohol(alcohol_3[0], alcohol_3[2])+alcohol(alcohol_4[0], alcohol_4[2]);
-			insert_table = "";
-
-			$("#myModal #wypity_alkohol").html('').append(wypite);
-			$("#myModal #dawka_smiertelna").html('').append(dawka_smiertelna(waga));
-			$("#myModal #result").html('').append(licz(plec,waga,wzrost,alcohol_1,alcohol_2,alcohol_3,alcohol_4).toFixed(2));
-			promile = wypite;
-			$("#myModal #rozklad_alko").html('');
-			for(var i = 10; i <= 200; i=i+5){
-				//$("#myModal #rozklad_alko").append("<p>Po "+i/10+" godzinie od przestania picia stężenie alkoholu we krwi będzie wynosiło "+(promile/weight(plec,waga)).toFixed(2)+" &permil;</p>");
-				//$("#myModal #rozklad_alko").append("<tr><td>"+i/10+"</td><td>"+(promile/weight(plec,waga)).toFixed(2)+" &permil;</td><td></td><td></td></p>");
-				insert_table += "<tr><td>"+i/10+"</td><td>"+(promile/weight(plec,waga)).toFixed(2)+" &permil;</td><td>"+i/10+"</td><td>"+i/10+"</td></p>";
-				var promile = promile - ucieczka_alko(promile);
-				if(promile <= 0)
-					break;
-			}
-			$("#myModal #rozklad_alko").append("<table class='table col-md-12'><tr><th>Godzina</th><th>Ilość promili</th><th>Godzin od początku picia</th><th>Godzin od zakończenia picia</th></tr><tbody>"+insert_table+"</tbody></table>");
-		}
-
-		function back(){
-			$("#myModal #alko-result").hide("slow");
-			$("#myModal #alko-form").show("slow");
-			$("#myModal #formularz")[0].reset();
-		}
-
-		function licz(plec,waga,wzrost,alcohol_1,alcohol_2,alcohol_3,alcohol_4){
-			return (alcohol(alcohol_1[0], alcohol_1[2])+alcohol(alcohol_2[0], alcohol_2[2])+alcohol(alcohol_3[0], alcohol_3[2])+alcohol(alcohol_4[0], alcohol_4[2]))/(weight(plec,waga,wzrost));
-		}
-
-		function sex(type){
-			switch(type){
-				case 'male':
-					return 0.7;
-				break;
-
-				case 'female':
-					return 0.6;
-				break;
-			}
-		}
-	
-		function dawka_smiertelna(waga){
-			return waga*4;
-		}
-
-		function weight(s, weight, height){
-			temp = sex(s)*weight;
-			height = height / 100;
-			bmi = (weight/(height*height));
-
-			count_bmi = 0;
-
-			if(bmi > 25){
-				count_bmi = ((bmi - 25) * (height*height))*-1;
-			}
-
-			if(bmi < 18.5){
-				count_bmi = ((18.5 - bmi) * (height*height));
-			}
-
-			return temp;
-		}
-
-		function sex(type){
-			switch(type){
-				case 'male':
-					return 0.7;
-				break;
-
-				case 'female':
-					return 0.6;
-				break;
-			}
-		}
-
-		function alcohol(size, percent){
-			return Math.round(((size * (percent / 100))*0.79));
-		}
-
-		function ucieczka_alko(m){
-			return ((10*m)/(4.2 + m)/2);
-		}
-
-	</script>
-	
+	<script type="text/javascript" src="script.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
