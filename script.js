@@ -44,13 +44,13 @@ function test(){
 					date_all = add_half_min(date_all);
 					date_start += 0.5;
 
-					console.log(promile_wchlanianie);
+					//console.log(promile_wchlanianie);
 					y = y+0.5;
-					console.log("y="+y);
+					//console.log("y="+y);
 				}
 
 				promile_check = promile/weight(plec,waga);
-				console.log("Promile check = "+promile_check);
+				//console.log("Promile check = "+promile_check);
 				if(promile_check >= 2.5){
 					color = color_alert;
 				} else if(promile_check < 2.5 && promile_check >= 0.5){
@@ -67,7 +67,7 @@ function test(){
 				insert_table += "<tr><td>"+date_all+"</td><td style='color: #"+color+"'>"+(promile/weight(plec,waga)).toFixed(2)+" &permil;</td><td>"+date_start+"</td><td>"+date_end+"</td></p>";
 				date_start += 0.5;
 				date_end += 0.5;
-				console.log(promile);
+				//console.log(promile);
 				var promile = promile - ucieczka_alko(promile);
 				if(promile <= 0)
 					break;
@@ -89,9 +89,12 @@ function test(){
 			}
 			else{
 				date_split[0] = parseInt(date_split[0])+1;
+				if(date_split[0] < 10){
+					date_split[0] = "0"+date_split[0];
+				}
 				date_split[1] = "00";
 			}
-			if(date_split[0] >= "24"){
+			if(date_split[0] >= 24){
 				date_split[0] = "00"
 			}
 

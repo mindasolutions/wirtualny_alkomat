@@ -280,7 +280,9 @@
 
 	          </div>
 	          <!-- koniec kodu automatu -->
-
+	          <div class="modal-footer">
+	          		<small>Działanie Wirtualnego Alkomatu  oparte jest na algorytmie matematycznym. Wskazane wartości stężenia alkoholu we krwi mogą różnić się od rzeczywistych, na przykład ze względu na przyjmowanie leków czy stan psychiczny, których Alkomat Wirtualny nie bierze pod uwagę. Wówczas uzyskany wynik może być zbyt wysoki lub za niski. Autorzy tej strony nie biorą odpowiedzialności za żadne wypadki, zniszczenia ani szkody wynikające z zastosowania Alkomatu . Otrzymany wynik ani jego przybliżone wartości nie mogą być podstawą do ocenienia rzeczywistej zawartości alkoholu we krwi, a co za tym idzie na przykład do uczestniczenia w ruchu drogowym. Każdemu, kto pił alkohol radzimy zrezygnować z kierowania jakimkolwiek pojazdem. Przypominamy, że zgodnie z polskim prawem prowadzenie pojazdu pod wpływem alkoholu jest zabronione i grozi karą pozbawienia wolności oraz utratą prawa jazdy.</small>
+	            </div>
 
 	        </div>
 	        
