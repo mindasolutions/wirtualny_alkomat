@@ -240,7 +240,7 @@
 	          	      				    </div>
 	          	      				    <div class="form-group row">
 	          	      				    	<div class="col-md-8">
-	          	      				    		<span id="wypity_alkohol"></span>&permil; ml
+	          	      				    		<span id="wypity_alkohol"></span> ml
 	          	      				    	</div>
 	          	      				    </div>
 	          	      				</div>
