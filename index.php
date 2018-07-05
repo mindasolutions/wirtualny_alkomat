@@ -207,8 +207,9 @@
       				    </div>
 
 	              		<div class="form-group row">
-	    	          		<input type="button" id="calculate" value="Oblicz" class="form-control bg-success col-md-6 text-white" onclick="test()">
-	    	          		<input type="button" id="calculate2" value="Wyczyść" class="form-control bg-info col-md-6 text-white" onclick="this.form.reset()">
+	    	          		<input type="button" id="calculate" value="Oblicz" class="form-control bg-success col-md-4 text-white" onclick="test()">
+	    	          		<input type="button" id="calculate" value="Mapka" class="form-control bg-success col-md-4 text-white" onclick="test()">
+	    	          		<input type="button" id="calculate2" value="Wyczyść" class="form-control bg-info col-md-4 text-white" onclick="this.form.reset()">
 	              		</div>
 		          	</div>
 		          </div>
